@@ -1,6 +1,70 @@
-/******* Change Box Model ***************/
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
+/* --- Estilos Base (Mobile First) --- */
+.home-view {
+  padding: 10px;
+  font-family: Arial, sans-serif;
+}
+
+.hero-container {
+  position: relative;
+  text-align: center;
+}
+
+.hero-text {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.hero-container img {
+  width: 100%;
+  height: auto;
+}
+
+.own-today {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Upgrades Grid */
+.upgrade-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  text-align: center;
+}
+
+.upgrade-img-box {
+  background-color: #3498db;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.upgrade-img-box img {
+  max-width: 60px;
+}
+
+/* --- Media Query para Pantallas Grandes (Desktop) --- */
+@media (min-width: 800px) {
+  .flex-content {
+    display: flex;
+    flex-direction: row-reverse; /* Pone reviews a la derecha y upgrades a la izquierda */
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+
+  .reviews,
+  .upgrades {
+    width: 48%;
+  }
+
+  .hero-text {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    text-align: left;
+  }
 }
