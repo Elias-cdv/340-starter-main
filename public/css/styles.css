@@ -1,70 +1,105 @@
-/* --- Estilos Base (Mobile First) --- */
-.home-view {
-  padding: 10px;
-  font-family: Arial, sans-serif;
+/* --- ESTILOS BASE (Para Celular - Mobile First) --- */
+* {
+  box-sizing: border-box;
 }
 
+body {
+  font-family: "Inter", Arial, sans-serif;
+  background-image: url("/images/site/small_check.png");
+  margin: 0;
+}
+
+#wrapper {
+  background-color: #fff;
+  border: 5px solid #3498db;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+}
+
+/* Tipografía */
+h1,
+h2,
+h3 {
+  color: #333;
+}
+
+/* Sección del Carro (Hero) */
 .hero-container {
   position: relative;
-  text-align: center;
+  margin-bottom: 20px;
 }
 
 .hero-text {
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 10px;
-  margin-bottom: 10px;
-  color: #333;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 15px;
+  color: #3498db;
+  z-index: 1;
+  width: fit-content;
 }
 
 .hero-container img {
   width: 100%;
   height: auto;
+  display: block;
 }
 
 .own-today {
   background-color: #3498db;
-  color: white;
-  padding: 10px 20px;
   border: none;
+  padding: 10px 20px;
+  font-size: 1.2rem;
   cursor: pointer;
 }
 
-/* Upgrades Grid */
+/* Cuadrícula de Mejoras (Upgrades) */
 .upgrade-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-  text-align: center;
+  grid-template-columns: 1fr 1fr; /* Dos columnas en celular */
+  gap: 10px;
 }
 
-.upgrade-img-box {
+.upgrade-item {
   background-color: #3498db;
+  border: 1px solid #333;
+  text-align: center;
   padding: 10px;
-  margin-bottom: 5px;
 }
 
-.upgrade-img-box img {
-  max-width: 60px;
+.upgrade-item img {
+  max-width: 50px;
+  height: auto;
 }
 
-/* --- Media Query para Pantallas Grandes (Desktop) --- */
+.upgrade-item a {
+  display: block;
+  color: #fff;
+  text-decoration: underline;
+  margin-top: 5px;
+}
+
+/* --- DISEÑO PARA COMPUTADORA (Escritorio) --- */
 @media (min-width: 800px) {
+  #wrapper {
+    max-width: 1000px;
+    margin: 20px auto;
+  }
+
   .flex-content {
     display: flex;
-    flex-direction: row-reverse; /* Pone reviews a la derecha y upgrades a la izquierda */
-    justify-content: space-between;
-    margin-top: 30px;
+    flex-direction: row-reverse; /* Reviews a la derecha, Upgrades a la izquierda */
+    gap: 40px;
+    align-items: flex-start;
   }
 
   .reviews,
   .upgrades {
-    width: 48%;
+    width: 50%;
   }
 
   .hero-text {
     position: absolute;
-    top: 50px;
-    left: 50px;
-    text-align: left;
+    top: 20px;
+    left: 20px;
   }
 }
