@@ -1,41 +1,88 @@
-/* --- ESTILOS BASE (Para Celular - Mobile First) --- */
+/* ===========================
+   BASE STYLES - Mobile First
+   =========================== */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  font-family: "Inter", Arial, sans-serif;
+  font-family: Georgia, "Times New Roman", serif;
+  background-color: #f0f0f0;
   background-image: url("/images/site/small_check.png");
-  margin: 0;
+  color: #222;
 }
 
 #wrapper {
-  background-color: #fff;
-  border: 5px solid #3498db;
-  border-radius: 10px;
-  margin: 10px;
-  padding: 10px;
+  background-color: #ffffff;
+  max-width: 1100px;
+  margin: 0 auto;
+  border-left: 4px solid #1a3c5e;
+  border-right: 4px solid #1a3c5e;
 }
 
-/* Tipografía */
-h1,
-h2,
-h3 {
-  color: #333;
+/* --- Header --- */
+#top-header {
+  background-color: #1a3c5e;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
 }
 
-/* Sección del Carro (Hero) */
+#top-header a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+#tools a {
+  font-size: 0.9rem;
+  color: #f0c040;
+  text-decoration: underline;
+}
+
+/* --- Navigation --- */
+nav {
+  background-color: #2c5f8a;
+  padding: 8px 20px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* --- Main Content --- */
+main {
+  padding: 16px;
+}
+
+h1 {
+  font-size: 1.6rem;
+  color: #1a3c5e;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* --- Hero Section --- */
 .hero-container {
   position: relative;
-  margin-bottom: 20px;
-}
-
-.hero-text {
-  background-color: rgba(255, 255, 255, 0.85);
-  padding: 15px;
-  color: #3498db;
-  z-index: 1;
-  width: fit-content;
+  margin-bottom: 24px;
 }
 
 .hero-container img {
@@ -44,62 +91,149 @@ h3 {
   display: block;
 }
 
-.own-today {
-  background-color: #3498db;
-  border: none;
-  padding: 10px 20px;
-  font-size: 1.2rem;
-  cursor: pointer;
+.hero-text {
+  background-color: rgba(255, 255, 255, 0.92);
+  padding: 16px;
+  margin-bottom: 8px;
+  border-left: 4px solid #1a3c5e;
 }
 
-/* Cuadrícula de Mejoras (Upgrades) */
+.hero-text h2 {
+  color: #1a3c5e;
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+
+.hero-text p {
+  color: #333;
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+.own-today {
+  display: inline-block;
+  background-color: #1a3c5e;
+  color: #ffffff;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 1rem;
+  border-radius: 4px;
+}
+
+.own-today:hover {
+  background-color: #2c5f8a;
+}
+
+/* --- Reviews --- */
+.reviews {
+  margin-bottom: 24px;
+}
+
+.reviews h3 {
+  color: #1a3c5e;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #1a3c5e;
+  padding-bottom: 6px;
+}
+
+.reviews ul {
+  list-style: none;
+  padding: 0;
+}
+
+.reviews ul li {
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+  font-style: italic;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+/* --- Upgrades --- */
+.upgrades h3 {
+  color: #1a3c5e;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #1a3c5e;
+  padding-bottom: 6px;
+}
+
 .upgrade-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Dos columnas en celular */
-  gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
 }
 
 .upgrade-item {
-  background-color: #3498db;
-  border: 1px solid #333;
+  background-color: #1a3c5e;
   text-align: center;
-  padding: 10px;
+  padding: 12px 8px;
+  border-radius: 4px;
 }
 
 .upgrade-item img {
-  max-width: 50px;
-  height: auto;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 8px;
 }
 
 .upgrade-item a {
   display: block;
-  color: #fff;
+  color: #f0c040;
   text-decoration: underline;
-  margin-top: 5px;
+  font-size: 0.9rem;
 }
 
-/* --- DISEÑO PARA COMPUTADORA (Escritorio) --- */
-@media (min-width: 800px) {
-  #wrapper {
-    max-width: 1000px;
-    margin: 20px auto;
+/* --- Footer --- */
+footer {
+  background-color: #1a3c5e;
+  color: #ffffff;
+  text-align: center;
+  padding: 14px;
+  font-size: 0.9rem;
+  margin-top: 24px;
+}
+
+/* ===========================
+   DESKTOP STYLES
+   =========================== */
+@media (min-width: 768px) {
+  main {
+    padding: 24px 32px;
   }
 
-  .flex-content {
-    display: flex;
-    flex-direction: row-reverse; /* Reviews a la derecha, Upgrades a la izquierda */
-    gap: 40px;
-    align-items: flex-start;
+  h1 {
+    font-size: 2rem;
+    text-align: left;
   }
 
-  .reviews,
-  .upgrades {
-    width: 50%;
+  .hero-container {
+    position: relative;
   }
 
   .hero-text {
     position: absolute;
     top: 20px;
     left: 20px;
+    width: 280px;
+    margin-bottom: 0;
+  }
+
+  .flex-content {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+  }
+
+  .reviews {
+    flex: 1;
+    margin-bottom: 0;
+  }
+
+  .upgrades {
+    flex: 1;
   }
 }
