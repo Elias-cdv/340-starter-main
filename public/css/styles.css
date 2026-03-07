@@ -8,7 +8,7 @@
 }
 
 body {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Montserrat", Arial, sans-serif;
   background-color: #f0f0f0;
   background-image: url("/images/site/small_check.png");
   color: #222;
@@ -61,10 +61,14 @@ nav ul li a {
   color: #ffffff;
   text-decoration: none;
   font-size: 0.95rem;
+  transition: color 0.2s ease;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
 }
 
 nav ul li a:hover {
-  text-decoration: underline;
+  color: #f0c040;
+  border-bottom: 2px solid #f0c040;
 }
 
 /* --- Main Content --- */
@@ -118,10 +122,15 @@ h1 {
   text-decoration: none;
   font-size: 1rem;
   border-radius: 4px;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
 }
 
 .own-today:hover {
-  background-color: #2c5f8a;
+  background-color: #f0c040;
+  color: #1a3c5e;
+  transform: scale(1.05);
 }
 
 /* --- Reviews --- */
@@ -170,6 +179,14 @@ h1 {
   text-align: center;
   padding: 12px 8px;
   border-radius: 4px;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.upgrade-item:hover {
+  transform: translateY(-4px);
+  background-color: #2c5f8a;
 }
 
 .upgrade-item img {
