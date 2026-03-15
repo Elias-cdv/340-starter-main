@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS public.inventory (
 	inv_thumbnail character varying NOT NULL,
 	inv_price numeric(9, 0) NOT NULL,
 	inv_miles integer NOT NULL,
-    inv_color character varying NOT NULL
+  inv_color character varying NOT NULL,
 	classification_id integer NOT NULL,
 	CONSTRAINT inventory_pkey PRIMARY KEY (inv_id)
 );
@@ -223,3 +223,14 @@ VALUES   (
     'White',
     5
   );
+
+
+-- Query 4
+UPDATE public.inventory
+SET inv_description = REPLACE(inv_description, 'small interiors', 'a huge interior')
+WHERE inv_id = 10;
+
+-- Query 6
+UPDATE public.inventory
+SET inv_image = REPLACE(inv_image, '/images/', '/images/vehicles/'),
+    inv_thumbnail = REPLACE(inv_thumbnail, '/images/', '/images/vehicles/');
