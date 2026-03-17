@@ -26,7 +26,7 @@ app.set("layout", "./layouts/layout");
 app.use(static);
 
 // Index rout
-app.get("/", function (req, res) {
+app.get("/", baseController.buildHome(req, res) {
   res.render("index", { title: "Home" });
 });
 
