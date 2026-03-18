@@ -12,11 +12,11 @@ const app = express();
 const static = require("./routes/static");
 const baseController = require("./controllers/baseController");
 const inventoryRoute = require("./routes/inventoryRoute");
+const utilities = require("./utilities/"); // ¡TE FALTABA ESTO!
 
 /* ***********************
  * View Engine and Templates
  *************************/
-
 app.set("view engine", "ejs");
 app.use(expressLayouts);
 app.set("layout", "./layouts/layout");
@@ -26,9 +26,35 @@ app.set("layout", "./layouts/layout");
  *************************/
 app.use(static);
 
-// Index rout
-app.get("/", baseController.buildHome);
+// Index route
+app.get("/", utilities.handleErrors(baseController.buildHome));
 app.use("/inv", inventoryRoute);
+
+/* ***********************
+ * Middleware para 404 - DEBE IR AL FINAL DE LAS RUTAS
+ *************************/
+app.use(async (req, res, next) => {
+  next({ status: 404, message: "Sorry, it seems we lost that page." });
+});
+
+/* ***********************
+ * Express Error Handler
+ *************************/
+app.use(async (err, req, res, next) => {
+  let nav = await utilities.getNav();
+  console.error(`Error en: "${req.originalUrl}": ${err.message}`);
+
+  let message =
+    err.status == 404
+      ? err.message
+      : "Oh no! There was a collision. Perhaps try another route?";
+
+  res.render("errors/error", {
+    title: err.status || "Error del Servidor",
+    message,
+    nav,
+  });
+});
 
 /* ***********************
  * Local Server Information
