@@ -1,20 +1,48 @@
+const pool = require("../database/");
+
 /* ***************************
- * Get specific inventory item by inv_id
+ * Get all classification data
+ * ************************** */
+async function getClassifications() {
+  return await pool.query(
+    "SELECT * FROM public.classification ORDER BY classification_name",
+  );
+}
+
+/* ***************************
+ * Get all inventory items by classification_id
+ * ************************** */
+async function getInventoryByClassificationId(classification_id) {
+  try {
+    const data = await pool.query(
+      `SELECT * FROM public.inventory AS i 
+      JOIN public.classification AS c 
+      ON i.classification_id = c.classification_id 
+      WHERE i.classification_id = $1`,
+      [classification_id],
+    );
+    return data.rows;
+  } catch (error) {
+    console.error("getInventoryByClassificationId error " + error);
+  }
+}
+
+/* ***************************
+ * Get specific vehicle by inv_id (ESTA ES LA NUEVA PARA EL DETALLE)
  * ************************** */
 async function getInventoryById(inv_id) {
-  // <--- CAMBIA EL NOMBRE AQUÍ
   try {
     const data = await pool.query(
       "SELECT * FROM public.inventory WHERE inv_id = $1",
       [inv_id],
     );
-    return data.rows[0];
+    return data.rows[0]; // Retorna solo un vehículo
   } catch (error) {
-    return error.message;
+    console.error("getInventoryById error " + error);
   }
 }
 
-// EXPORTA LAS TRES FUNCIONES
+// AQUÍ ESTABA TU ERROR: Tienes que exportar las TRES funciones
 module.exports = {
   getClassifications,
   getInventoryByClassificationId,
