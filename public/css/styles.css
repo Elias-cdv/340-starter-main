@@ -282,3 +282,31 @@ footer {
 .namePrice {
   color: #00ffcc; /* Un color tech/cyberpunk */
 }
+.vehicle-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 1rem;
+}
+.vehicle-detail__image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+.vehicle-detail__info h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+.vehicle-detail__price {
+  font-size: 1.4rem;
+  color: #2a7ae2;
+  margin-bottom: 1rem;
+}
+.vehicle-detail__info p {
+  margin: 0.5rem 0;
+}
+@media (max-width: 768px) {
+  .vehicle-detail {
+    grid-template-columns: 1fr;
+  }
+}
