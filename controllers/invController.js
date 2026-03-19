@@ -1,20 +1,19 @@
-const invModel = require("../models/inventory-model");
-const utilities = require("../utilities/");
-const invCont = {};
-
 /* ***************************
- * Construir vista de inventario por ID de clasificación
+ * Entregar vista de detalle de vehículo
  * ************************** */
-invCont.buildByClassificationId = async function (req, res, next) {
-  const classification_id = req.params.classificationId;
-  const data = await invModel.getInventoryByClassificationId(classification_id);
-  const grid = await utilities.buildClassificationGrid(data);
+invCont.getVehicleDetail = async function (req, res, next) {
+  const inv_id = req.params.invId;
+  const data = await invModel.getInventoryById(inv_id);
+
+  // Usamos la utilidad que ya creaste
+  const detailView = await utilities.buildVehicleDetailsHtml(data);
   let nav = await utilities.getNav();
-  const className = data[0].classification_name;
-  res.render("./inventory/classification", {
-    title: className + " vehicles",
+  const vehicleName = `${data.inv_year} ${data.inv_make} ${data.inv_model}`;
+
+  res.render("./inventory/detail", {
+    title: vehicleName,
     nav,
-    grid,
+    detailView,
   });
 };
 
