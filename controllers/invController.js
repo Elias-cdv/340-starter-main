@@ -1,5 +1,9 @@
 const invModel = require("../models/inventory-model");
 const utilities = require("../utilities/");
+<<<<<<< HEAD
+=======
+const invCont = {}; // <--- ¡ESTA ES LA LÍNEA QUE TE FALTABA!
+>>>>>>> 8b1744a3a7d6ab49d5ab80a736726edaed224165
 
 const invCont = {}; // ← esto faltaba, por eso truena
 
@@ -36,5 +40,23 @@ invCont.buildDetailView = utilities.handleErrors(
 invCont.triggerError = utilities.handleErrors(async function (req, res, next) {
   throw new Error("Intentional 500 error triggered!");
 });
+
+/* ***************************
+ * Entregar vista de detalle de vehículo (LA NUEVA)
+ * ************************** */
+invCont.getVehicleDetail = async function (req, res, next) {
+  const inv_id = req.params.invId;
+  const data = await invModel.getInventoryById(inv_id);
+
+  const detailView = await utilities.buildVehicleDetailsHtml(data);
+  let nav = await utilities.getNav();
+  const vehicleName = `${data.inv_year} ${data.inv_make} ${data.inv_model}`;
+
+  res.render("./inventory/detail", {
+    title: vehicleName,
+    nav,
+    detailView,
+  });
+};
 
 module.exports = invCont;

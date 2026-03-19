@@ -104,4 +104,16 @@ Util.buildVehicleDetailHTML = function (vehicle) {
   `;
 };
 
+Util.buildVehicleDetailsHtml = async function (data) {
+  let view = `<section class="vehicle-details">`;
+  view += `<img src="${data.inv_image}" alt="${data.inv_make} ${data.inv_model}">`;
+  view += `<div class="details-content">`;
+  view += `<h2>${data.inv_year} ${data.inv_make} ${data.inv_model}</h2>`;
+  view += `<p class="price">Price: $${new Intl.NumberFormat("en-US").format(data.inv_price)}</p>`;
+  view += `<p>Mileage: ${new Intl.NumberFormat("en-US").format(data.inv_miles)} miles</p>`;
+  view += `<p>Description: ${data.inv_description}</p>`;
+  view += `</div></section>`;
+  return view;
+};
+
 module.exports = Util;

@@ -1,6 +1,18 @@
+<<<<<<< HEAD
 <%- layout('./layouts/layout') %>
 
 <main id="main-content">
   <h1><%= title %></h1>
   <%- detailHTML %>
 </main>
+=======
+<%- include("../partials/head") %> <%- include("../partials/header") %>
+<nav><%- nav %></nav>
+
+<main>
+  <h1><%= title %></h1>
+  <%- detailView %>
+</main>
+
+<%- include("../partials/footer") %>
+>>>>>>> 8b1744a3a7d6ab49d5ab80a736726edaed224165
