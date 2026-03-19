@@ -282,7 +282,6 @@ footer {
 .namePrice {
   color: #00ffcc; /* Un color tech/cyberpunk */
 }
-<<<<<<< HEAD
 .vehicle-detail {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -309,16 +308,5 @@ footer {
 @media (max-width: 768px) {
   .vehicle-detail {
     grid-template-columns: 1fr;
-=======
-
-@media screen and (min-width: 768px) {
-  .vehicle-details {
-    display: flex;
-    gap: 2rem;
-    align-items: flex-start;
-  }
-  .vehicle-details img {
-    max-width: 50%;
->>>>>>> 8b1744a3a7d6ab49d5ab80a736726edaed224165
   }
 }
