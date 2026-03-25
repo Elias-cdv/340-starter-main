@@ -11,4 +11,17 @@ async function buildLogin(req, res, next) {
   });
 }
 
-module.exports = { buildLogin };
+/* ****************************************
+ * Deliver registration view
+ * *************************************** */
+async function buildRegister(req, res, next) {
+  let nav = await utilities.getNav();
+  res.render("account/register", {
+    title: "Register",
+    nav,
+    errors: null,
+  });
+}
+
+// Actualiza tus exports para que incluyan la nueva función
+module.exports = { buildLogin, buildRegister };
