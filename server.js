@@ -16,6 +16,8 @@ const utilities = require("./utilities/");
 /*require statements: sessons and messages*/
 const session = require("express-session");
 const pool = require("./database/");
+//route of accountRoute
+const accountRoute = require("./routes/accountRoute");
 
 /*Middelware of session */
 app.use(
@@ -49,6 +51,7 @@ app.set("layout", "./layouts/layout");
  * Routes
  *************************/
 app.use(static);
+app.use("/account", accountRoute);
 
 // Index route
 app.get("/", utilities.handleErrors(baseController.buildHome));
