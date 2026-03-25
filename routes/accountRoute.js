@@ -4,5 +4,10 @@ const utilities = require("../utilities/");
 const accountController = require("../controllers/accountController");
 
 router.get("/login", utilities.handleErrors(accountController.buildLogin));
+// Route to build registration view
+router.get(
+  "/registration",
+  utilities.handleErrors(accountController.buildRegister),
+);
 
 module.exports = router;
