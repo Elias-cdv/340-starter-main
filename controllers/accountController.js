@@ -2,7 +2,7 @@ const utilities = require("../utilities/");
 //controller of account model
 const accountModel = require("../models/account-model");
 //Bcrypt
-const bcrypt = require("bcrypts");
+const bcrypt = require("bcryptjs"); //FIXED
 
 /* ****************************************
  * Deliver login view
@@ -56,7 +56,6 @@ async function registerAccount(req, res) {
     account_firstname,
     account_lastname,
     account_email,
-    account_password,
     hashedPassword,
   );
 
