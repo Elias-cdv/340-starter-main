@@ -1,12 +1,38 @@
-// Recursos Necesarios
 const express = require("express");
 const router = new express.Router();
 const invController = require("../controllers/invController");
+const invValidate = require("../utilities/inventory-validation");
+const utilities = require("../utilities/");
 
-// Ruta para construir la vista de inventario por clasificación
-// El ":classificationId" es un parámetro variable
-router.get("/type/:classificationId", invController.buildByClassificationId);
-router.get("/detail/:invId", invController.buildDetailView);
-router.get("/trigger-error", invController.triggerError);
+// Route to management view (Task 1)
+router.get("/", utilities.handleErrors(invController.buildManagement));
+
+// Route to add classification view (Task 2)
+router.get(
+  "/add-classification",
+  utilities.handleErrors(invController.buildAddClassification),
+);
+
+// Process add classification
+router.post(
+  "/add-classification",
+  invValidate.classificationRules(),
+  invValidate.checkClassData,
+  utilities.handleErrors(invController.addClassification),
+);
+
+// Route to add inventory view (Task 3)
+router.get(
+  "/add-inventory",
+  utilities.handleErrors(invController.buildAddInventory),
+);
+
+// Process add inventory
+router.post(
+  "/add-inventory",
+  invValidate.inventoryRules(),
+  invValidate.checkInventoryData,
+  utilities.handleErrors(invController.addInventory),
+);
 
 module.exports = router;
