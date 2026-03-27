@@ -4,6 +4,7 @@ const utilities = require("../utilities/");
 const accountController = require("../controllers/accountController");
 // Revisa que el nombre sea EXACTO al del archivo en la carpeta utilities
 const regValidate = require("../utilities/account-validation");
+
 router.get("/login", utilities.handleErrors(accountController.buildLogin));
 // Route to build registration view
 router.get(

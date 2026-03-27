@@ -74,23 +74,19 @@ invCont.addClassification = async function (req, res, next) {
       "notice",
       `The ${classification_name} classification was successfully added.`,
     );
-    res
-      .status(201)
-      .render("inventory/management", {
-        title: "Inventory Management",
-        nav,
-        errors: null,
-      });
+    res.status(201).render("inventory/management", {
+      title: "Inventory Management",
+      nav,
+      errors: null,
+    });
   } else {
     let nav = await utilities.getNav();
     req.flash("notice", "Sorry, adding the classification failed.");
-    res
-      .status(501)
-      .render("inventory/add-classification", {
-        title: "Add New Classification",
-        nav,
-        errors: null,
-      });
+    res.status(501).render("inventory/add-classification", {
+      title: "Add New Classification",
+      nav,
+      errors: null,
+    });
   }
 };
 
@@ -141,13 +137,11 @@ invCont.addInventory = async function (req, res, next) {
 
   if (result) {
     req.flash("notice", `The ${inv_make} ${inv_model} was successfully added.`);
-    res
-      .status(201)
-      .render("inventory/management", {
-        title: "Inventory Management",
-        nav,
-        errors: null,
-      });
+    res.status(201).render("inventory/management", {
+      title: "Inventory Management",
+      nav,
+      errors: null,
+    });
   } else {
     let classificationSelect =
       await utilities.buildClassificationList(classification_id);
