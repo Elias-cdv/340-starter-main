@@ -84,11 +84,17 @@ async function insertInventory(
   }
 }
 
-// ASEGÚRATE DE EXPORTARLAS. Tu module.exports debe verse algo así:
+module.exports = {
+  getClassifications,
+  insertClassification,
+  insertInventory,
+};
+
+/* ASEGÚRATE DE EXPORTARLAS. Tu module.exports debe verse algo así:
 module.exports = {
   getClassifications,
   getInventoryByClassificationId,
   getInventoryByInventoryId,
   insertClassification,
   insertInventory,
-};
+};*/
