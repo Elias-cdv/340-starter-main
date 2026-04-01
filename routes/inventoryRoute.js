@@ -52,7 +52,7 @@ router.get(
  * ************************** */
 router.post(
   "/update/",
-  invValidate.newInventoryRules(), // Reusamos las reglas de "add"
+  invValidate.InventoryRules(), // Reusamos las reglas de "add"
   invValidate.checkUpdateData, // Usaremos la nueva función de chequeo
   utilities.handleErrors(invController.updateInventory),
 );
