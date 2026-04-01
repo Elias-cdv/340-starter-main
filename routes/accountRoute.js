@@ -4,10 +4,9 @@ const utilities = require("../utilities/");
 const accountController = require("../controllers/accountController");
 const regValidate = require("../utilities/account-validation");
 
-// Default route for account management
 router.get(
   "/",
-  utilities.checkJWTToken,
+  utilities.checkLogin,
   utilities.handleErrors(accountController.buildManagementView),
 );
 
