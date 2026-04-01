@@ -47,4 +47,14 @@ router.get(
   utilities.handleErrors(invController.editInventoryView),
 );
 
+/* ***************************
+ * Route to process the update (POST)
+ * ************************** */
+router.post(
+  "/update/",
+  invValidate.newInventoryRules(), // Reusamos las reglas de "add"
+  invValidate.checkUpdateData, // Usaremos la nueva función de chequeo
+  utilities.handleErrors(invController.updateInventory),
+);
+
 module.exports = router;
