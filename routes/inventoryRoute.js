@@ -52,9 +52,15 @@ router.get(
  * ************************** */
 router.post(
   "/update/",
-  invValidate.InventoryRules(), // Reusamos las reglas de "add"
+  invValidate.inventoryRules(), // Reusamos las reglas de "add"
   invValidate.checkUpdateData, // Usaremos la nueva función de chequeo
   utilities.handleErrors(invController.updateInventory),
 );
+
+// Ruta para mostrar la vista de confirmación de eliminación
+router.get("/delete/:inv_id", utilities.handleErrors(invController.deleteView));
+
+// Ruta para procesar la eliminación
+router.post("/delete/", utilities.handleErrors(invController.deleteItem));
 
 module.exports = router;
