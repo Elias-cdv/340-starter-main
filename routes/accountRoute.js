@@ -34,16 +34,4 @@ router.post(
   utilities.handleErrors(accountController.accountLogin),
 );
 
-/* ****************************************
- * Deliver management view
- * *************************************** */
-async function buildManagementView(req, res, next) {
-  let nav = await utilities.getNav();
-  res.render("account/management", {
-    title: "Account Management",
-    nav,
-    errors: null,
-  });
-}
-
 module.exports = router;
