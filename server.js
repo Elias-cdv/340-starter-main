@@ -20,6 +20,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
 /*Middelware of session */
+app.use(utilities.checkJWTToken);
 app.use(cookieParser());
 app.use(
   session({
