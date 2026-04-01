@@ -2,7 +2,10 @@ const utilities = require("../utilities/");
 //controller of account model
 const accountModel = require("../models/account-model");
 //Bcrypt
-const bcrypt = require("bcryptjs"); //FIXED
+const bcrypt = require("bcryptjs");
+//jsonwebtoken and dotenv packages
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 /* ****************************************
  * Deliver login view
