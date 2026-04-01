@@ -132,4 +132,12 @@ async function accountLogin(req, res) {
   }
 }
 
-module.exports = { buildLogin, buildRegister, registerAccount, accountLogin };
+// ... todas tus funciones async (buildLogin, accountLogin, etc.)
+
+module.exports = {
+  buildLogin,
+  buildRegister,
+  registerAccount,
+  accountLogin,
+  buildManagementView,
+};

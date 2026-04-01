@@ -46,11 +46,4 @@ async function buildManagementView(req, res, next) {
   });
 }
 
-// AQUÍ SÍ EXPORTAS TODAS LAS FUNCIONES COMO UN OBJETO:
-module.exports = {
-  buildLogin,
-  buildRegister,
-  registerAccount,
-  accountLogin, // Esta es la del JWT
-  buildManagementView, // Esta es la que acabamos de mover
-};
+module.exports = router;
