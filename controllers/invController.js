@@ -182,4 +182,4 @@ invCont.getInventoryJSON = async (req, res, next) => {
   }
 };
 
-module.exports = { invCont, buildManagement, getInventoryJSON };
+module.exports = invCont;
