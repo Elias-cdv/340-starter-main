@@ -13,13 +13,11 @@ const static = require("./routes/static");
 const baseController = require("./controllers/baseController");
 const inventoryRoute = require("./routes/inventoryRoute");
 const utilities = require("./utilities/");
-/*require statements: sessons and messages*/
 const session = require("express-session");
 const pool = require("./database/");
-//route of accountRoute
 const accountRoute = require("./routes/accountRoute");
-//body-parser
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 
 /*Middelware of session */
 app.use(
