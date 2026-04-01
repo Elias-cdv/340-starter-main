@@ -41,4 +41,10 @@ router.get(
   utilities.handleErrors(invController.getInventoryJSON),
 );
 
+// Ruta para mostrar la vista de edición de un vehículo específico
+router.get(
+  "/edit/:inv_id",
+  utilities.handleErrors(invController.editInventoryView),
+);
+
 module.exports = router;
