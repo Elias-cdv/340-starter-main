@@ -176,4 +176,23 @@ Util.checkLogin = (req, res, next) => {
   }
 };
 
+/* ****************************************
+ * Check Account Type (Middleware)
+ * ************************************ */
+Util.checkAccountType = (req, res, next) => {
+  if (
+    res.locals.loggedin &&
+    (res.locals.accountData.account_type === "Employee" ||
+      res.locals.accountData.account_type === "Admin")
+  ) {
+    next(); // Si es Employee o Admin, lo deja pasar
+  } else {
+    req.flash(
+      "notice",
+      "Please log in with an appropriate account to access this area.",
+    );
+    return res.redirect("/account/login");
+  }
+};
+
 module.exports = Util;

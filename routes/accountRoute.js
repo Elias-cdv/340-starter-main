@@ -33,4 +33,31 @@ router.post(
   utilities.handleErrors(accountController.accountLogin),
 );
 
+// Entregar la vista de update
+router.get(
+  "/update/:id",
+  utilities.checkLogin,
+  accountController.buildUpdateView,
+);
+
+// Procesar el update de datos
+router.post(
+  "/update",
+  utilities.checkLogin,
+  regValidate.updateRules(),
+  regValidate.checkUpdateData,
+  utilities.handleErrors(accountController.updateAccount),
+);
+
+// Procesar el update de password
+router.post(
+  "/update-password",
+  utilities.checkLogin,
+  regValidate.passwordRules(),
+  regValidate.checkPasswordData,
+  utilities.handleErrors(accountController.updatePassword),
+);
+
+router.get("/logout", utilities.handleErrors(accountController.accountLogout));
+
 module.exports = router;
