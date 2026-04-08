@@ -3,58 +3,30 @@
 
 <div class="management-links">
   <ul>
-    <li>
-      <a
-        href="/inv/add-classification"
-        title="Click to add a new classification"
-        >Add New Classification</a
-      >
-    </li>
-    <li>
-      <a href="/inv/add-inventory" title="Click to add a new vehicle"
-        >Add New Vehicle</a
-      >
-    </li>
+    <li><a href="/inv/add-classification">Add New Classification</a></li>
+    <li><a href="/inv/add-inventory">Add New Vehicle</a></li>
   </ul>
 
   <h2>Manage Inventory</h2>
-  <p>
-    Select a classification from the list to see the items belonging to the
-    classification.
-  </p>
-
+  <p>Select a classification to see items.</p>
   <%- classificationSelect %>
-
   <table id="inventoryDisplay"></table>
-
-  <noscript>JavaScript must be enabled to use this page.</noscript>
-</div>
-
-<h1><%= title %></h1>
-<%- messages() %>
-
-<div class="management-links">
-    <a href="/inv/add-classification">Add New Classification</a>
-    <a href="/inv/add-inventory">Add New Vehicle</a>
+  <noscript>JavaScript must be enabled.</noscript>
 </div>
 
 <hr>
 
-<div class="review-test-section" style="background: #f0f0f0; padding: 20px; margin-top: 20px;">
-    <h2>Test: Customer Reviews (Global)</h2>
-
+<div class="review-test" style="background: #f0f0f0; padding: 20px; border: 1px solid #ccc;">
+    <h2>Test Reviews System</h2>
     <% if (locals.loggedin) { %>
         <form action="/review/add" method="post">
-            <label for="review_text">Escribe algo para probar la base de datos:</label><br>
-            <textarea name="review_text" id="review_text" rows="4" required></textarea>
-            
+            <textarea name="review_text" rows="4" style="width:100%" required placeholder="Escribe algo aquí..."></textarea>
             <input type="hidden" name="inv_id" value="1"> 
             <input type="hidden" name="account_id" value="<%= locals.accountData.account_id %>">
-            
             <br><button type="submit">Enviar Reseña de Prueba</button>
         </form>
     <% } else { %>
-        <p>Debes estar <a href="/account/login">logueado</a> para probar esto.</p>
+        <p>Debes estar <a href="/account/login">logueado</a> para probar reseñas.</p>
     <% } %>
 </div>
 
