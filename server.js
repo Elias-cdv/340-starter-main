@@ -58,6 +58,8 @@ app.set("layout", "./layouts/layout");
 app.use(static);
 app.use("/account", accountRoute);
 
+app.use("/review", require("./routes/reviewRoute"));
+
 // Index route
 app.get("/", utilities.handleErrors(baseController.buildHome));
 app.use("/inv", inventoryRoute);

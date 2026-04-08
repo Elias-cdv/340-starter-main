@@ -1,4 +1,5 @@
 const invModel = require("../models/inventory-model");
+const reviewModel = require("../models/review-model");
 const utilities = require("../utilities/");
 
 const invCont = {};
@@ -23,12 +24,19 @@ invCont.buildDetailView = utilities.handleErrors(
   async function (req, res, next) {
     const inv_id = req.params.invId;
     const vehicle = await invModel.getInventoryByInvId(inv_id);
+
+    // --- NUEVA LÓGICA DE RESEÑAS ---
+    const reviews = await reviewModel.getReviewsByInvId(inv_id);
+    // -------------------------------
+
     const detailHTML = utilities.buildVehicleDetailHTML(vehicle);
     let nav = await utilities.getNav();
+
     res.render("./inventory/detail", {
       title: `${vehicle.inv_make} ${vehicle.inv_model}`,
       nav,
       detailHTML,
+      reviews, // <--- PASAMOS LAS RESEÑAS A LA VISTA
     });
   },
 );
