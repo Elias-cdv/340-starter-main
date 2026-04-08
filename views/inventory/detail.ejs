@@ -1,40 +1,40 @@
-<%- include("../partials/head") %> 
-<%- include("../partials/header") %>
-<nav><%- nav %></nav>
-
-<main>
-  <h1><%= title %></h1>
-  <%- messages() %> <%- detailHTML %>
-
-  <hr>
-  <div class="review-container">
-    <h2>Customer Reviews</h2>
+<% if (vehicle) { %>
+    <h1><%= vehicle.inv_year %> <%= vehicle.inv_make %> <%= vehicle.inv_model %></h1>
+    <%- messages() %>
     
-    <% if (locals.loggedin) { %>
-      <form action="/review/add" method="post">
-        <label for="review_text">Leave a Review:</label><br>
-        <textarea name="review_text" id="review_text" rows="4" required></textarea>
-        <input type="hidden" name="inv_id" value="<%= vehicle.inv_id %>">
-        <input type="hidden" name="account_id" value="<%= locals.accountData.account_id %>">
-        <br><button type="submit">Submit</button>
-      </form>
-    <% } else { %>
-      <p>Please <a href="/account/login">login</a> to leave a review.</p>
-    <% } %>
-
-    <div id="reviews">
-      <% if (reviews && reviews.length > 0) { %>
-        <% reviews.forEach(review => { %>
-          <div class="review">
-            <p><strong><%= review.account_firstname %></strong> wrote:</p>
-            <p><%= review.review_text %></p>
-          </div>
-        <% }) %>
-      <% } else { %>
-        <p>No reviews yet.</p>
-      <% } %>
+    <div class="vehicle-detail">
+        <%- detailHTML %>
     </div>
-  </div>
-</main>
 
-<%- include("../partials/footer") %>
+    <hr>
+    <div class="reviews-section">
+        <h2>Customer Reviews</h2>
+        
+        <% if (locals.loggedin) { %>
+            <form action="/review/add" method="post">
+                <label for="review_text">Leave a Review:</label><br>
+                <textarea name="review_text" id="review_text" rows="4" required></textarea>
+                <input type="hidden" name="inv_id" value="<%= vehicle.inv_id %>">
+                <input type="hidden" name="account_id" value="<%= locals.accountData.account_id %>">
+                <br><button type="submit">Submit Review</button>
+            </form>
+        <% } else { %>
+            <p>Please <a href="/account/login">login</a> to leave a review.</p>
+        <% } %>
+
+        <div id="review-list">
+            <% if (reviews && reviews.length > 0) { %>
+                <% reviews.forEach(review => { %>
+                    <div class="review-item">
+                        <p><strong><%= review.account_firstname %></strong> wrote:</p>
+                        <p><%= review.review_text %></p>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p>No reviews yet. Be the first!</p>
+            <% } %>
+        </div>
+    </div>
+<% } else { %>
+    <h1>Vehicle not found</h1>
+<% } %>
