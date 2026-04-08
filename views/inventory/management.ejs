@@ -30,4 +30,32 @@
   <noscript>JavaScript must be enabled to use this page.</noscript>
 </div>
 
+<h1><%= title %></h1>
+<%- messages() %>
+
+<div class="management-links">
+    <a href="/inv/add-classification">Add New Classification</a>
+    <a href="/inv/add-inventory">Add New Vehicle</a>
+</div>
+
+<hr>
+
+<div class="review-test-section" style="background: #f0f0f0; padding: 20px; margin-top: 20px;">
+    <h2>Test: Customer Reviews (Global)</h2>
+
+    <% if (locals.loggedin) { %>
+        <form action="/review/add" method="post">
+            <label for="review_text">Escribe algo para probar la base de datos:</label><br>
+            <textarea name="review_text" id="review_text" rows="4" required></textarea>
+            
+            <input type="hidden" name="inv_id" value="1"> 
+            <input type="hidden" name="account_id" value="<%= locals.accountData.account_id %>">
+            
+            <br><button type="submit">Enviar Reseña de Prueba</button>
+        </form>
+    <% } else { %>
+        <p>Debes estar <a href="/account/login">logueado</a> para probar esto.</p>
+    <% } %>
+</div>
+
 <script src="../../js/inventory.js"></script>
