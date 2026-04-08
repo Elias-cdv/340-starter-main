@@ -81,4 +81,16 @@ router.post(
   utilities.handleErrors(invController.deleteItem),
 );
 
+// Ruta para ver vehículos por clasificación (ESTA ES LA QUE TE DA EL 404 EN SPORTS)
+router.get(
+  "/type/:classificationId",
+  utilities.handleErrors(invController.buildByClassificationId),
+);
+
+// Ruta para ver el detalle de un vehículo específico
+router.get(
+  "/detail/:invId",
+  utilities.handleErrors(invController.buildDetailView),
+);
+
 module.exports = router;
