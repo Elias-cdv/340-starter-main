@@ -47,6 +47,7 @@ app.get("/", utilities.handleErrors(baseController.buildHome)); // Home primero
 app.use("/inv", inventoryRoute);
 app.use("/account", accountRoute);
 app.use("/review", require("./routes/reviewRoute"));
+
 /* Error 404 (Al final de todo) */
 app.use(async (req, res, next) => {
   next({ status: 404, message: "Sorry, it seems we lost that page." });
