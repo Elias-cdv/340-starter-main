@@ -27,4 +27,14 @@ async function getReviewsByInvId(inv_id) {
   }
 }
 
+async function deleteReview(review_id, account_id) {
+  try {
+    const sql = "DELETE FROM reviews WHERE review_id = $1 AND account_id = $2";
+    return await pool.query(sql, [review_id, account_id]);
+  } catch (error) {
+    console.error("deleteReview error: " + error);
+  }
+}
+module.exports = { addReview, getReviewsByInvId, deleteReview };
+
 module.exports = { addReview, getReviewsByInvId };

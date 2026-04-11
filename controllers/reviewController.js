@@ -23,4 +23,11 @@ revCont.addReview = async function (req, res) {
   }
 };
 
+revCont.deleteReview = async function (req, res) {
+  const { review_id, inv_id, account_id } = req.body;
+  await reviewModel.deleteReview(review_id, account_id);
+  req.flash("notice", "Review deleted.");
+  res.redirect("/inv/detail/" + inv_id);
+};
+
 module.exports = revCont;
