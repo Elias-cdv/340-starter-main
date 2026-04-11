@@ -1,8 +1,5 @@
 const pool = require("../database/");
 
-/* ***************************
- * Añadir nueva reseña
- * ************************** */
 async function addReview(review_text, inv_id, account_id) {
   try {
     const sql =
@@ -13,9 +10,6 @@ async function addReview(review_text, inv_id, account_id) {
   }
 }
 
-/* ***************************
- * Obtener reseñas por ID de vehículo
- * ************************** */
 async function getReviewsByInvId(inv_id) {
   try {
     const sql = `SELECT r.review_id, r.review_text, r.review_date, r.account_id,
@@ -30,15 +24,5 @@ async function getReviewsByInvId(inv_id) {
     console.error("getReviewsByInvId error: " + error);
   }
 }
-
-async function deleteReview(review_id, account_id) {
-  try {
-    const sql = "DELETE FROM reviews WHERE review_id = $1 AND account_id = $2";
-    return await pool.query(sql, [review_id, account_id]);
-  } catch (error) {
-    console.error("deleteReview error: " + error);
-  }
-}
-module.exports = { addReview, getReviewsByInvId, deleteReview };
 
 module.exports = { addReview, getReviewsByInvId };
