@@ -12,11 +12,9 @@
 
   <% if (locals.loggedin) { %>
     <form action="/review/add" method="post">
-      <label for="review_text">
-        Reviewing as: <strong><%= locals.accountData.account_firstname.charAt(0) %><%= locals.accountData.account_lastname %></strong>
-      </label><br>
+      <label for="review_text">Leave a Review:</label><br>
       <textarea name="review_text" id="review_text" rows="4" cols="50" required
-        placeholder="Share your experience with this vehicle..."></textarea><br>
+        placeholder="Share your experience..."></textarea><br>
       <input type="hidden" name="inv_id" value="<%= vehicle.inv_id %>">
       <input type="hidden" name="account_id" value="<%= locals.accountData.account_id %>">
       <button type="submit">Submit Review</button>
@@ -30,9 +28,7 @@
       <ul>
         <% reviews.forEach(function(review) { %>
           <li>
-            <strong>
-              <%= review.account_firstname.charAt(0) %><%= review.account_lastname %>
-            </strong>
+            <strong><%= review.account_firstname.charAt(0) %><%= review.account_lastname %></strong>
             wrote on <%= new Date(review.review_date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %>:
             <blockquote><%= review.review_text %></blockquote>
           </li>
@@ -42,13 +38,4 @@
       <p>Be the first to review this vehicle!</p>
     <% } %>
   </div>
-
-  <% if (locals.accountData && locals.accountData.account_id === review.account_id) { %>
-  <form action="/review/delete" method="post" style="display:inline">
-    <input type="hidden" name="review_id" value="<%= review.review_id %>">
-    <input type="hidden" name="inv_id" value="<%= vehicle.inv_id %>">
-    <input type="hidden" name="account_id" value="<%= locals.accountData.account_id %>">
-    <button type="submit">Delete</button>
-  </form>
-<% } %>
 </section>
