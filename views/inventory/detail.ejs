@@ -1,37 +1,45 @@
 <h1><%= title %></h1>
 <%- messages() %>
 
-<div class="vehicle-details">
-    <%- detailHTML %>
+<div class="vehicle-detail">
+  <%- detailHTML %>
 </div>
 
 <hr>
 
-<div class="review-section">
-    <h2>Customer Reviews</h2> <% if (locals.loggedin) { %>
-        <form action="/review/add" method="post">
-            <label for="review_text">Leave a Review:</label><br>
-            <textarea name="review_text" id="review_text" rows="4" required></textarea>
-            
-            <input type="hidden" name="inv_id" value="<%= inv_id %>"> 
-            <input type="hidden" name="account_id" value="<%= locals.accountData.account_id %>">
-            
-            <br><button type="submit">Submit Review</button>
-        </form>
-    <% } else { %>
-        <p>Please <a href="/account/login">login</a> to leave a review.</p>
-    <% } %>
+<section class="review-section">
+  <h2>Customer Reviews</h2>
 
-    <div id="review-list">
-        <% if (reviews && reviews.length > 0) { %>
-            <% reviews.forEach(review => { %>
-                <div class="review-item">
-                    <p><strong><%= review.account_firstname %></strong> wrote:</p>
-                    <p><%= review.review_text %></p>
-                </div>
-            <% }) %>
-        <% } else { %>
-            <p>Be the first to write a review!</p>
-        <% } %>
-    </div>
-</div>
+  <% if (locals.loggedin) { %>
+    <form action="/review/add" method="post">
+      <label for="review_text">
+        Reviewing as: <strong><%= locals.accountData.account_firstname.charAt(0) %><%= locals.accountData.account_lastname %></strong>
+      </label><br>
+      <textarea name="review_text" id="review_text" rows="4" cols="50" required
+        placeholder="Share your experience with this vehicle..."></textarea><br>
+      <input type="hidden" name="inv_id" value="<%= vehicle.inv_id %>">
+      <input type="hidden" name="account_id" value="<%= locals.accountData.account_id %>">
+      <button type="submit">Submit Review</button>
+    </form>
+  <% } else { %>
+    <p>Please <a href="/account/login">log in</a> to leave a review.</p>
+  <% } %>
+
+  <div id="reviews-list">
+    <% if (reviews && reviews.length > 0) { %>
+      <ul>
+        <% reviews.forEach(function(review) { %>
+          <li>
+            <strong>
+              <%= review.account_firstname.charAt(0) %><%= review.account_lastname %>
+            </strong>
+            wrote on <%= new Date(review.review_date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %>:
+            <blockquote><%= review.review_text %></blockquote>
+          </li>
+        <% }) %>
+      </ul>
+    <% } else { %>
+      <p>Be the first to review this vehicle!</p>
+    <% } %>
+  </div>
+</section>

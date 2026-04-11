@@ -36,6 +36,7 @@ invCont.buildDetailView = utilities.handleErrors(
       title: `${vehicle.inv_make} ${vehicle.inv_model}`,
       nav,
       detailHTML,
+      vehicle,
       reviews, // <--- PASAMOS LAS RESEÑAS A LA VISTA
     });
   },
